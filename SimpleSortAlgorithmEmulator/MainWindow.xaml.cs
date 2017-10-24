@@ -15,6 +15,8 @@ using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
 using System.Threading;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace SimpleSortAlgorithmEmulator
 {
@@ -25,10 +27,15 @@ namespace SimpleSortAlgorithmEmulator
     {
         SortingWindow sortingWindow;
         bool isSorting = false;
+        ObservableCollection<SortResultContainer> sortResultContainerList;
 
         public MainWindow()
         {
             InitializeComponent();
+
+            sortResultContainerList = new ObservableCollection<SortResultContainer>();
+            //set data binding
+            SortResultListBox.ItemsSource = sortResultContainerList;
         }
 
         private void GenerateRandomFileButton_Click(object sender, RoutedEventArgs e)
@@ -344,6 +351,9 @@ namespace SimpleSortAlgorithmEmulator
                 return;
             }
 
+            //initialize sort result container list
+            sortResultContainerList.Clear();
+
             //start sorting
             PrintToTextBox("开始排序...\n");
             PrintToTextBox("\n");
@@ -417,6 +427,7 @@ namespace SimpleSortAlgorithmEmulator
             decimal timeSum = 0;
             int[] innerRandomNums = new int[randomNums.Length];
             Stopwatch sw = new Stopwatch();
+            SortResultContainer sortResultContainer = new SortResultContainer(1, "直接插入排序", repeatNum);
 
             PrintToTextBox("正在进行直接插入排序...\n");
 
@@ -451,6 +462,7 @@ namespace SimpleSortAlgorithmEmulator
                 sw.Stop();
                 timeSum += sw.ElapsedTicks / (decimal)Stopwatch.Frequency;
                 PrintToTextBox("第" + (count + 1) + "次直接插入排序完成！用时" + (sw.ElapsedTicks / (decimal)Stopwatch.Frequency) + "秒\n");
+                sortResultContainer.TimeArr[count] = (sw.ElapsedTicks / (decimal)Stopwatch.Frequency);
 
                 //save sorted numbers to file
                 string resultFilePath = String.Format("{0}Sorted_Algorithm1_{1}.txt", resultFolderPath, count + 1);
@@ -475,6 +487,9 @@ namespace SimpleSortAlgorithmEmulator
             }
 
             PrintToTextBox("直接插入排序完成！共用时" + timeSum + "秒，平均用时" + (timeSum / repeatNum) + "秒\n");
+            sortResultContainer.TimeSum = timeSum;
+            sortResultContainer.TimeAvg = timeSum / repeatNum;
+            sortResultContainerList.Add(sortResultContainer);
         }
 
         //折半插入排序
@@ -483,6 +498,7 @@ namespace SimpleSortAlgorithmEmulator
             decimal timeSum = 0;
             int[] innerRandomNums = new int[randomNums.Length];
             Stopwatch sw = new Stopwatch();
+            SortResultContainer sortResultContainer = new SortResultContainer(2, "折半插入排序", repeatNum);
 
             PrintToTextBox("正在进行折半插入排序...\n");
 
@@ -529,6 +545,7 @@ namespace SimpleSortAlgorithmEmulator
                 sw.Stop();
                 timeSum += sw.ElapsedTicks / (decimal)Stopwatch.Frequency;
                 PrintToTextBox("第" + (count + 1) + "次折半插入排序完成！用时" + (sw.ElapsedTicks / (decimal)Stopwatch.Frequency) + "秒\n");
+                sortResultContainer.TimeArr[count] = (sw.ElapsedTicks / (decimal)Stopwatch.Frequency);
 
                 //save sorted numbers to file
                 string resultFilePath = String.Format("{0}Sorted_Algorithm2_{1}.txt", resultFolderPath, count + 1);
@@ -553,6 +570,9 @@ namespace SimpleSortAlgorithmEmulator
             }
 
             PrintToTextBox("折半插入排序完成！共用时" + timeSum + "秒，平均用时" + (timeSum / repeatNum) + "秒\n");
+            sortResultContainer.TimeSum = timeSum;
+            sortResultContainer.TimeAvg = timeSum / repeatNum;
+            sortResultContainerList.Add(sortResultContainer);
         }
 
         //希尔排序
@@ -561,6 +581,7 @@ namespace SimpleSortAlgorithmEmulator
             decimal timeSum = 0;
             int[] innerRandomNums = new int[randomNums.Length];
             Stopwatch sw = new Stopwatch();
+            SortResultContainer sortResultContainer = new SortResultContainer(3, "希尔排序", repeatNum);
 
             PrintToTextBox("正在进行希尔排序...\n");
 
@@ -604,6 +625,7 @@ namespace SimpleSortAlgorithmEmulator
                 sw.Stop();
                 timeSum += sw.ElapsedTicks / (decimal)Stopwatch.Frequency;
                 PrintToTextBox("第" + (count + 1) + "次希尔排序完成！用时" + (sw.ElapsedTicks / (decimal)Stopwatch.Frequency) + "秒\n");
+                sortResultContainer.TimeArr[count] = (sw.ElapsedTicks / (decimal)Stopwatch.Frequency);
 
                 //save sorted numbers to file
                 string resultFilePath = String.Format("{0}Sorted_Algorithm3_{1}.txt", resultFolderPath, count + 1);
@@ -628,6 +650,9 @@ namespace SimpleSortAlgorithmEmulator
             }
 
             PrintToTextBox("希尔排序完成！共用时" + timeSum + "秒，平均用时" + (timeSum / repeatNum) + "秒\n");
+            sortResultContainer.TimeSum = timeSum;
+            sortResultContainer.TimeAvg = timeSum / repeatNum;
+            sortResultContainerList.Add(sortResultContainer);
         }
 
         //冒泡排序
@@ -636,6 +661,7 @@ namespace SimpleSortAlgorithmEmulator
             decimal timeSum = 0;
             int[] innerRandomNums = new int[randomNums.Length];
             Stopwatch sw = new Stopwatch();
+            SortResultContainer sortResultContainer = new SortResultContainer(4, "冒泡排序", repeatNum);
 
             PrintToTextBox("正在进行冒泡排序...\n");
 
@@ -669,6 +695,7 @@ namespace SimpleSortAlgorithmEmulator
                 sw.Stop();
                 timeSum += sw.ElapsedTicks / (decimal)Stopwatch.Frequency;
                 PrintToTextBox("第" + (count + 1) + "次冒泡排序完成！用时" + (sw.ElapsedTicks / (decimal)Stopwatch.Frequency) + "秒\n");
+                sortResultContainer.TimeArr[count] = (sw.ElapsedTicks / (decimal)Stopwatch.Frequency);
 
                 //save sorted numbers to file
                 string resultFilePath = String.Format("{0}Sorted_Algorithm4_{1}.txt", resultFolderPath, count + 1);
@@ -693,6 +720,9 @@ namespace SimpleSortAlgorithmEmulator
             }
 
             PrintToTextBox("冒泡排序完成！共用时" + timeSum + "秒，平均用时" + (timeSum / repeatNum) + "秒\n");
+            sortResultContainer.TimeSum = timeSum;
+            sortResultContainer.TimeAvg = timeSum / repeatNum;
+            sortResultContainerList.Add(sortResultContainer);
         }
 
         //快速排序
@@ -701,6 +731,7 @@ namespace SimpleSortAlgorithmEmulator
             decimal timeSum = 0;
             int[] innerRandomNums = new int[randomNums.Length];
             Stopwatch sw = new Stopwatch();
+            SortResultContainer sortResultContainer = new SortResultContainer(5, "快速排序", repeatNum);
 
             PrintToTextBox("正在进行快速排序...\n");
 
@@ -723,6 +754,7 @@ namespace SimpleSortAlgorithmEmulator
                 sw.Stop();
                 timeSum += sw.ElapsedTicks / (decimal)Stopwatch.Frequency;
                 PrintToTextBox("第" + (count + 1) + "次快速排序完成！用时" + (sw.ElapsedTicks / (decimal)Stopwatch.Frequency) + "秒\n");
+                sortResultContainer.TimeArr[count] = (sw.ElapsedTicks / (decimal)Stopwatch.Frequency);
 
                 //save sorted numbers to file
                 string resultFilePath = String.Format("{0}Sorted_Algorithm5_{1}.txt", resultFolderPath, count + 1);
@@ -747,6 +779,9 @@ namespace SimpleSortAlgorithmEmulator
             }
 
             PrintToTextBox("快速排序完成！共用时" + timeSum + "秒，平均用时" + (timeSum / repeatNum) + "秒\n");
+            sortResultContainer.TimeSum = timeSum;
+            sortResultContainer.TimeAvg = timeSum / repeatNum;
+            sortResultContainerList.Add(sortResultContainer);
         }
 
         private void Quicksort(int[] a, int low, int high)
@@ -781,6 +816,7 @@ namespace SimpleSortAlgorithmEmulator
             decimal timeSum = 0;
             int[] innerRandomNums = new int[randomNums.Length];
             Stopwatch sw = new Stopwatch();
+            SortResultContainer sortResultContainer = new SortResultContainer(6, "简单选择排序", repeatNum);
 
             PrintToTextBox("正在进行简单选择排序...\n");
 
@@ -821,6 +857,7 @@ namespace SimpleSortAlgorithmEmulator
                 sw.Stop();
                 timeSum += sw.ElapsedTicks / (decimal)Stopwatch.Frequency;
                 PrintToTextBox("第" + (count + 1) + "次简单选择排序完成！用时" + (sw.ElapsedTicks / (decimal)Stopwatch.Frequency) + "秒\n");
+                sortResultContainer.TimeArr[count] = (sw.ElapsedTicks / (decimal)Stopwatch.Frequency);
 
                 //save sorted numbers to file
                 string resultFilePath = String.Format("{0}Sorted_Algorithm6_{1}.txt", resultFolderPath, count + 1);
@@ -845,6 +882,9 @@ namespace SimpleSortAlgorithmEmulator
             }
 
             PrintToTextBox("简单选择排序完成！共用时" + timeSum + "秒，平均用时" + (timeSum / repeatNum) + "秒\n");
+            sortResultContainer.TimeSum = timeSum;
+            sortResultContainer.TimeAvg = timeSum / repeatNum;
+            sortResultContainerList.Add(sortResultContainer);
         }
 
         //堆排序
@@ -853,6 +893,7 @@ namespace SimpleSortAlgorithmEmulator
             decimal timeSum = 0;
             int[] innerRandomNums = new int[randomNums.Length];
             Stopwatch sw = new Stopwatch();
+            SortResultContainer sortResultContainer = new SortResultContainer(7, "堆排序", repeatNum);
 
             PrintToTextBox("正在进行堆排序...\n");
 
@@ -875,6 +916,7 @@ namespace SimpleSortAlgorithmEmulator
                 sw.Stop();
                 timeSum += sw.ElapsedTicks / (decimal)Stopwatch.Frequency;
                 PrintToTextBox("第" + (count + 1) + "次堆排序完成！用时" + (sw.ElapsedTicks / (decimal)Stopwatch.Frequency) + "秒\n");
+                sortResultContainer.TimeArr[count] = (sw.ElapsedTicks / (decimal)Stopwatch.Frequency);
 
                 //save sorted numbers to file
                 string resultFilePath = String.Format("{0}Sorted_Algorithm7_{1}.txt", resultFolderPath, count + 1);
@@ -899,6 +941,9 @@ namespace SimpleSortAlgorithmEmulator
             }
 
             PrintToTextBox("堆排序完成！共用时" + timeSum + "秒，平均用时" + (timeSum / repeatNum) + "秒\n");
+            sortResultContainer.TimeSum = timeSum;
+            sortResultContainer.TimeAvg = timeSum / repeatNum;
+            sortResultContainerList.Add(sortResultContainer);
         }
 
         private void HeapSort(int[] innerRandomNums)
@@ -955,6 +1000,7 @@ namespace SimpleSortAlgorithmEmulator
             decimal timeSum = 0;
             int[] innerRandomNums = new int[randomNums.Length];
             Stopwatch sw = new Stopwatch();
+            SortResultContainer sortResultContainer = new SortResultContainer(8, "二路归并排序", repeatNum);
 
             PrintToTextBox("正在进行二路归并排序...\n");
 
@@ -977,6 +1023,7 @@ namespace SimpleSortAlgorithmEmulator
                 sw.Stop();
                 timeSum += sw.ElapsedTicks / (decimal)Stopwatch.Frequency;
                 PrintToTextBox("第" + (count + 1) + "次二路归并排序完成！用时" + (sw.ElapsedTicks / (decimal)Stopwatch.Frequency) + "秒\n");
+                sortResultContainer.TimeArr[count] = (sw.ElapsedTicks / (decimal)Stopwatch.Frequency);
 
                 //save sorted numbers to file
                 string resultFilePath = String.Format("{0}Sorted_Algorithm8_{1}.txt", resultFolderPath, count + 1);
@@ -1001,6 +1048,9 @@ namespace SimpleSortAlgorithmEmulator
             }
 
             PrintToTextBox("二路归并排序完成！共用时" + timeSum + "秒，平均用时" + (timeSum / repeatNum) + "秒\n");
+            sortResultContainer.TimeSum = timeSum;
+            sortResultContainer.TimeAvg = timeSum / repeatNum;
+            sortResultContainerList.Add(sortResultContainer);
         }
 
         private void MergeSortFunction(int[] array, int first, int last)
@@ -1058,6 +1108,69 @@ namespace SimpleSortAlgorithmEmulator
                 App.DoEvents();
                 Thread.Sleep(50);//to make textbox ui refresh fluently
             }
+        }
+    }
+
+    public class SortResultContainer : INotifyPropertyChanged
+    {
+        private int id;
+        private string name;
+        private int count;
+        private decimal[] timeArr;
+        private decimal timeSum;
+        private decimal timeAvg;
+
+        public int Id
+        {
+            get { return id; }
+            set { id = value; OnPropertyChanged(new PropertyChangedEventArgs("Id")); }
+        }
+
+        public string Name
+        {
+            get { return name; }
+            set { name = value; OnPropertyChanged(new PropertyChangedEventArgs("Name")); }
+        }
+
+        public int Count
+        {
+            get { return count; }
+            set { count = value; OnPropertyChanged(new PropertyChangedEventArgs("Count")); }
+        }
+
+        public decimal[] TimeArr
+        {
+            get { return timeArr; }
+            set { timeArr = value; OnPropertyChanged(new PropertyChangedEventArgs("TimeArr")); }
+        }
+
+        public decimal TimeSum
+        {
+            get { return timeSum; }
+            set { timeSum = value; OnPropertyChanged(new PropertyChangedEventArgs("TimeArr")); }
+        }
+
+        public decimal TimeAvg
+        {
+            get { return timeAvg; }
+            set { timeAvg = value; OnPropertyChanged(new PropertyChangedEventArgs("TimeAvg")); }
+        }
+
+        public SortResultContainer(int id, string name, int count)
+        {
+            Id = id;
+            Name = name;
+            Count = count;
+            TimeArr = new decimal[count];
+            TimeSum = 0;
+            TimeAvg = 0;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void OnPropertyChanged(PropertyChangedEventArgs e)
+        {
+            PropertyChanged?.Invoke(this, e);
         }
     }
 }

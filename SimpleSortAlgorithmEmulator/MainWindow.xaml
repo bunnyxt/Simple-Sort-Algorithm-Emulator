@@ -8,8 +8,7 @@
         Title="排序算法模拟器" Height="380" Width="750" MinHeight="380" MinWidth="750">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="250"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
@@ -115,15 +114,15 @@
             </Grid>
         </GroupBox>
 
-        <GroupBox Grid.Column="1" Grid.ColumnSpan="2" Margin="4">
+        <GroupBox Grid.Column="1" Margin="4">
             <GroupBox.Header>
                 <TextBlock Text="排序"/>
             </GroupBox.Header>
 
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="250"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Column="0">
@@ -272,9 +271,32 @@
                         </GroupBox.Header>
 
                         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-                            <ListView IsEnabled="False" Margin="4">
+                            <ListBox Name="SortResultListBox" Focusable="False" Margin="4">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="100"/>
+                                                <ColumnDefinition Width="250"/>
+                                                <ColumnDefinition Width="250"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
 
-                            </ListView>
+                                            <TextBox Grid.Column="0" Text="{Binding Name}" BorderThickness="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,2,4,2"/>
+                                            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,2,4,2">
+                                                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,4,0">
+                                                    <TextBox Text="{Binding TimeAvg}" BorderThickness="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                    <ListBox BorderThickness="0">
+                                                        <!--add details-->
+                                                    </ListBox>
+                                                </StackPanel>
+                                                <ToggleButton Content="展开" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </StackPanel>
+                                            <TextBox Grid.Column="2" Text="{Binding TimeSum}" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,2,0,2"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
                         </ScrollViewer>
                     </GroupBox>
                 </Grid>
