@@ -33,9 +33,9 @@ namespace SimpleSortAlgorithmEmulator
         {
             InitializeComponent();
 
-            sortResultContainerList = new ObservableCollection<SortResultContainer>();
             //set data binding
-            SortResultListBox.ItemsSource = sortResultContainerList;
+            sortResultContainerList = new ObservableCollection<SortResultContainer>();
+            SortResultListView.ItemsSource = sortResultContainerList;
         }
 
         private void GenerateRandomFileButton_Click(object sender, RoutedEventArgs e)

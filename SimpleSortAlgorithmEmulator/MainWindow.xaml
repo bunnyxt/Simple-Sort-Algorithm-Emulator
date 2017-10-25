@@ -271,32 +271,15 @@
                         </GroupBox.Header>
 
                         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-                            <ListBox Name="SortResultListBox" Focusable="False" Margin="4">
-                                <ListBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="100"/>
-                                                <ColumnDefinition Width="250"/>
-                                                <ColumnDefinition Width="250"/>
-                                                <ColumnDefinition Width="Auto"/>
-                                            </Grid.ColumnDefinitions>
-
-                                            <TextBox Grid.Column="0" Text="{Binding Name}" BorderThickness="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,2,4,2"/>
-                                            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,2,4,2">
-                                                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,4,0">
-                                                    <TextBox Text="{Binding TimeAvg}" BorderThickness="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                                    <ListBox BorderThickness="0">
-                                                        <!--add details-->
-                                                    </ListBox>
-                                                </StackPanel>
-                                                <ToggleButton Content="展开" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                            </StackPanel>
-                                            <TextBox Grid.Column="2" Text="{Binding TimeSum}" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,2,0,2"/>
-                                        </Grid>
-                                    </DataTemplate>
-                                </ListBox.ItemTemplate>
-                            </ListBox>
+                            <ListView Name="SortResultListView" Focusable="False" Margin="4">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="排序算法" Width="100" DisplayMemberBinding="{Binding Name}"/>
+                                        <GridViewColumn Header="平均用时（单位：秒）" Width="250" DisplayMemberBinding="{Binding TimeAvg}"/>
+                                        <GridViewColumn Header="总用时（单位：秒）" Width="250" DisplayMemberBinding="{Binding TimeSum}"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
                         </ScrollViewer>
                     </GroupBox>
                 </Grid>
