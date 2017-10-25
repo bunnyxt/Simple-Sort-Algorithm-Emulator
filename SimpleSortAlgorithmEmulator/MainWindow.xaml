@@ -270,17 +270,27 @@
                             <TextBlock Text="排序结果"/>
                         </GroupBox.Header>
 
-                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-                            <ListView Name="SortResultListView" Focusable="False" Margin="4">
-                                <ListView.View>
-                                    <GridView>
-                                        <GridViewColumn Header="排序算法" Width="100" DisplayMemberBinding="{Binding Name}"/>
-                                        <GridViewColumn Header="平均用时（单位：秒）" Width="250" DisplayMemberBinding="{Binding TimeAvg}"/>
-                                        <GridViewColumn Header="总用时（单位：秒）" Width="250" DisplayMemberBinding="{Binding TimeSum}"/>
-                                    </GridView>
-                                </ListView.View>
-                            </ListView>
-                        </ScrollViewer>
+                        <ListView Name="SortResultListView" Margin="4">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="排序算法" Width="Auto" DisplayMemberBinding="{Binding Name}"/>
+                                    <GridViewColumn Header="平均用时（单位：秒）" Width="Auto">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <StackPanel>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="{Binding TimeAvg}" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                                        <Button Name="ShowDetailResultButton" Content="展开" Click="ShowDetailResultButton_Click"/>
+                                                    </StackPanel>
+                                                    <ListView ItemsSource="{Binding TimeArr}" BorderThickness="0" MaxHeight="200" Visibility="Collapsed" Margin="0,4,0,4"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Header="总用时（单位：秒）" Width="Auto" DisplayMemberBinding="{Binding TimeSum}"/>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
                     </GroupBox>
                 </Grid>
             </Grid>

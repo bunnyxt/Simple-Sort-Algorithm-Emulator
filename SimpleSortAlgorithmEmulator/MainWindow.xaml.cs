@@ -88,7 +88,7 @@ namespace SimpleSortAlgorithmEmulator
                 System.Windows.MessageBox.Show("随机数文件生成完成！", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 //update sort result folder path
-                ResultSaveFolderPathTextBox.Text = storeFolderPath;
+                ResultSaveFolderPathTextBox.Text = storeFolderPath + "\\";
             }
             catch (Exception ex)
             {
@@ -1107,6 +1107,26 @@ namespace SimpleSortAlgorithmEmulator
                 sortingWindow.SortingTextBox.ScrollToEnd();
                 App.DoEvents();
                 Thread.Sleep(50);//to make textbox ui refresh fluently
+            }
+        }
+
+        private void ShowDetailResultButton_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Controls.Button button = (System.Windows.Controls.Button)sender;
+            StackPanel parentStackPanel = (StackPanel)button.Parent;
+            StackPanel parentParentStackPanel = (StackPanel)parentStackPanel.Parent;
+            System.Windows.Controls.ListView listView = (System.Windows.Controls.ListView)parentParentStackPanel.Children[1];
+            if (listView.Visibility == Visibility.Collapsed)
+            {
+                listView.Visibility = Visibility.Visible;
+                button.Content = "收起";
+                return;
+            }
+            if (listView.Visibility == Visibility.Visible)
+            {
+                listView.Visibility = Visibility.Collapsed;
+                button.Content = "展开";
+                return;
             }
         }
     }
