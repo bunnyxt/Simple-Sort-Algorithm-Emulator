@@ -1151,6 +1151,55 @@ namespace SimpleSortAlgorithmEmulator
                 return;
             }
         }
+
+        private void GridViewColumnHeaderName_Click(object sender, RoutedEventArgs e)
+        {
+            bool isSorted = true;
+            List<SortResultContainer> list = sortResultContainerList.OrderBy(u => u.Id).ToList();
+
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (list[0] != sortResultContainerList[0])
+                {
+                    isSorted = false;
+                }
+            }
+            if (isSorted)
+            {
+                list.Reverse();
+            }
+
+            sortResultContainerList.Clear();
+            foreach (var item in list)
+            {
+                sortResultContainerList.Add(item);
+            }
+        }
+
+        private void GridViewColumnHeaderTime_Click(object sender, RoutedEventArgs e)
+        {
+            bool isSorted = true;
+            List<SortResultContainer> list = sortResultContainerList.OrderBy(u => u.TimeSum).ToList();
+
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (list[0] != sortResultContainerList[0])
+                {
+                    isSorted = false;
+                }
+            }
+            if (isSorted)
+            {
+                list.Reverse();
+            }
+
+            sortResultContainerList.Clear();
+            foreach (var item in list)
+            {
+                sortResultContainerList.Add(item);
+            }
+        }
+
     }
 
     public class SortResultContainer : INotifyPropertyChanged

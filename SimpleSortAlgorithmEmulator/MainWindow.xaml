@@ -273,13 +273,28 @@
                         <ListView Name="SortResultListView" Margin="4">
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Header="排序算法" Width="Auto" DisplayMemberBinding="{Binding Name}"/>
-                                    <GridViewColumn Header="平均用时（单位：秒）" Width="Auto">
+                                    <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding Name}">
+                                        <GridViewColumnHeader Click="GridViewColumnHeaderName_Click">
+                                            <GridViewColumnHeader.ContentTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="排序算法" VerticalAlignment="Center"/>
+                                                </DataTemplate>
+                                            </GridViewColumnHeader.ContentTemplate>
+                                        </GridViewColumnHeader>
+                                    </GridViewColumn>
+                                    <GridViewColumn Width="280">
+                                        <GridViewColumnHeader Click="GridViewColumnHeaderTime_Click">
+                                            <GridViewColumnHeader.ContentTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="平均用时（单位：秒）" VerticalAlignment="Center"/>
+                                                </DataTemplate>
+                                            </GridViewColumnHeader.ContentTemplate>
+                                        </GridViewColumnHeader>
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <StackPanel>
-                                                    <StackPanel Orientation="Horizontal">
-                                                        <TextBlock Text="{Binding TimeAvg}" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                                    <StackPanel Orientation="Horizontal" Margin="6,0,0,0">
+                                                        <TextBlock Text="{Binding TimeAvg}" Width="210" VerticalAlignment="Center" Margin="0,0,10,0"/>
                                                         <Button Name="ShowDetailResultButton" Content="展开" Click="ShowDetailResultButton_Click"/>
                                                     </StackPanel>
                                                     <ListView ItemsSource="{Binding TimeArr}" BorderThickness="0" MaxHeight="200" Visibility="Collapsed" Margin="0,4,0,4"/>
@@ -287,7 +302,15 @@
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
-                                    <GridViewColumn Header="总用时（单位：秒）" Width="Auto" DisplayMemberBinding="{Binding TimeSum}"/>
+                                    <GridViewColumn Width="260" DisplayMemberBinding="{Binding TimeSum}">
+                                        <GridViewColumnHeader Click="GridViewColumnHeaderTime_Click">
+                                            <GridViewColumnHeader.ContentTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="总用时（单位：秒）" VerticalAlignment="Center"/>
+                                                </DataTemplate>
+                                            </GridViewColumnHeader.ContentTemplate>
+                                        </GridViewColumnHeader>
+                                    </GridViewColumn>
                                 </GridView>
                             </ListView.View>
                         </ListView>
