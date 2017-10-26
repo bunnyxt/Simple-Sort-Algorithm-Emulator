@@ -58,6 +58,22 @@ namespace SimpleSortAlgorithmEmulator
                 MaxRandomNumTextBox.Text = "10000";
                 return;
             }
+            if (randomNumber > 10000000 || randomNumber <= 0)
+            {
+                System.Windows.MessageBox.Show("随机数个数过多或过少！请重新输入！", "警告", MessageBoxButton.OK, MessageBoxImage.Error);
+                RandomNumberComboBox.Text = "10000";
+                MinRandomNumTextBox.Text = "0";
+                MaxRandomNumTextBox.Text = "10000";
+                return;
+            }
+            if (minRandomNum >= maxRandomNum)
+            {
+                System.Windows.MessageBox.Show("最大值或最小值非法！请重新输入！", "警告", MessageBoxButton.OK, MessageBoxImage.Error);
+                RandomNumberComboBox.Text = "10000";
+                MinRandomNumTextBox.Text = "0";
+                MaxRandomNumTextBox.Text = "10000";
+                return;
+            }
 
             //select file saving path
             FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
@@ -145,6 +161,12 @@ namespace SimpleSortAlgorithmEmulator
                     {
                         numberCount++;
                     }
+                }
+                if (numberCount > 10000000)
+                {
+                    System.Windows.MessageBox.Show("随机数个数过多！请重新选择！", "警告", MessageBoxButton.OK, MessageBoxImage.Error);
+                    RandomFilePathTextBox.Text = "";
+                    return;
                 }
                 RandomFileNumberInsideTextBlock.Text = numberCount.ToString();
             }
