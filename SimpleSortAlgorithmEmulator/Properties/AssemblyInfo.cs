@@ -8,9 +8,9 @@ using System.Windows;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("SimpleSortAlgorithmEmulator")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("A simple WPF programe designed to sort random numbers and compare sorting speed between different algorithms.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Bunnyxt")]
 [assembly: AssemblyProduct("SimpleSortAlgorithmEmulator")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
