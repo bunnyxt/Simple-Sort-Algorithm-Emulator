@@ -373,6 +373,24 @@ namespace SimpleSortAlgorithmEmulator
                 return;
             }
 
+            //check algorithm selection
+            if (
+                Algorithm1CheckBox.IsChecked == false &&
+                Algorithm2CheckBox.IsChecked == false &&
+                Algorithm3CheckBox.IsChecked == false &&
+                Algorithm4CheckBox.IsChecked == false &&
+                Algorithm5CheckBox.IsChecked == false &&
+                Algorithm6CheckBox.IsChecked == false &&
+                Algorithm7CheckBox.IsChecked == false &&
+                Algorithm8CheckBox.IsChecked == false 
+                )
+            {
+                System.Windows.MessageBox.Show("未选择任何算法！请至少勾选一种排序算法！", "警告", MessageBoxButton.OK, MessageBoxImage.Error);
+                sortingWindow.Close();
+                isSorting = false;
+                return;
+            }
+
             //initialize sort result container list
             sortResultContainerList.Clear();
 
@@ -1200,6 +1218,11 @@ namespace SimpleSortAlgorithmEmulator
             }
         }
 
+        private void HelpPageHyperlink_Click(object sender, RoutedEventArgs e)
+        {
+            HelpWindow helpWindow = new HelpWindow();
+            helpWindow.Show();
+        }
     }
 
     public class SortResultContainer : INotifyPropertyChanged
