@@ -355,7 +355,7 @@ namespace SimpleSortAlgorithmEmulator
                 Algorithm5CheckBox.IsChecked == false &&
                 Algorithm6CheckBox.IsChecked == false &&
                 Algorithm7CheckBox.IsChecked == false &&
-                Algorithm8CheckBox.IsChecked == false 
+                Algorithm8CheckBox.IsChecked == false
                 )
             {
                 System.Windows.MessageBox.Show("未选择任何算法！请至少勾选一种排序算法！", "警告", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -426,6 +426,51 @@ namespace SimpleSortAlgorithmEmulator
                 SortAlgorithm8(randomNums, repeatNumber, resultFolderPath);
                 PrintToTextBox("\n");
             }
+
+            //save time consumption to file
+            try
+            {
+                string resultFilePath = String.Format("{0}Time_Consumption_Record.txt", resultFolderPath);
+                FileStream resultFile = new FileStream(resultFilePath, FileMode.OpenOrCreate, FileAccess.Write);
+                foreach (var item in sortResultContainerList)
+                {
+                    byte[] buf;
+
+                    buf = Encoding.UTF8.GetBytes(item.Name + "\r\n");
+                    resultFile.Write(buf, 0, buf.Length);
+
+                    buf = Encoding.UTF8.GetBytes("重复次数：" + item.Count + "\r\n");
+                    resultFile.Write(buf, 0, buf.Length);
+
+                    buf = Encoding.UTF8.GetBytes("总用时：" + item.TimeSum + " 秒\r\n");
+                    resultFile.Write(buf, 0, buf.Length);
+
+                    buf = Encoding.UTF8.GetBytes("平均用时：" + item.TimeAvg + " 秒\r\n");
+                    resultFile.Write(buf, 0, buf.Length);
+
+                    buf = Encoding.UTF8.GetBytes("详细情况：\r\n");
+                    resultFile.Write(buf, 0, buf.Length);
+
+                    for (int i = 0; i < item.Count; i++)
+                    {
+                        buf = Encoding.UTF8.GetBytes("\t第" + (i + 1) + "次排序用时：" + item.TimeArr[i] + " 秒\r\n");
+                        resultFile.Write(buf, 0, buf.Length);
+                    }
+
+                    buf = Encoding.UTF8.GetBytes("\r\n");
+                    resultFile.Write(buf, 0, buf.Length);
+                }
+                resultFile.Flush();
+                resultFile.Close();
+                PrintToTextBox("排序消耗时间保存完成！\n");
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show("排序消耗时间保存失败！请重试！\n详细信息：" + ex.Message, "警告", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            PrintToTextBox("\n");
 
             PrintToTextBox("排序完成！\n");
             isSorting = false;
