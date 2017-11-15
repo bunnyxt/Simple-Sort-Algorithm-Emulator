@@ -150,73 +150,32 @@
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="1*"/>
-                                    <ColumnDefinition Width="3*"/>
-                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="7*"/>
                                 </Grid.ColumnDefinitions>
 
                                 <CheckBox Grid.Row="0" Grid.Column="0" Name="Algorithm1CheckBox" IsChecked="True" HorizontalAlignment="Center" Margin="4"/>
                                 <TextBlock Grid.Row="0" Grid.Column="1" Text="直接插入排序" HorizontalAlignment="Center" Margin="4"/>
-                                <TextBlock Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" Margin="4">
-                            <Hyperlink Name="Algorithm1Hyperlink" Click="AlgorithmHyperlink_Click">
-                                详情
-                            </Hyperlink>
-                                </TextBlock>
 
                                 <CheckBox Grid.Row="1" Grid.Column="0" Name="Algorithm2CheckBox" IsChecked="True" HorizontalAlignment="Center" Margin="4"/>
                                 <TextBlock Grid.Row="1" Grid.Column="1" Text="折半插入排序" HorizontalAlignment="Center" Margin="4"/>
-                                <TextBlock Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" Margin="4">
-                            <Hyperlink Name="Algorithm2Hyperlink" Click="AlgorithmHyperlink_Click">
-                                详情
-                            </Hyperlink>
-                                </TextBlock>
 
                                 <CheckBox Grid.Row="2" Grid.Column="0" Name="Algorithm3CheckBox" IsChecked="True" HorizontalAlignment="Center" Margin="4"/>
                                 <TextBlock Grid.Row="2" Grid.Column="1" Text="希尔排序" HorizontalAlignment="Center" Margin="4"/>
-                                <TextBlock Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" Margin="4">
-                            <Hyperlink Name="Algorithm3Hyperlink" Click="AlgorithmHyperlink_Click">
-                                详情
-                            </Hyperlink>
-                                </TextBlock>
 
                                 <CheckBox Grid.Row="3" Grid.Column="0" Name="Algorithm4CheckBox" IsChecked="True" HorizontalAlignment="Center" Margin="4"/>
                                 <TextBlock Grid.Row="3" Grid.Column="1" Text="冒泡排序" HorizontalAlignment="Center" Margin="4"/>
-                                <TextBlock Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center" Margin="4">
-                            <Hyperlink Name="Algorithm4Hyperlink" Click="AlgorithmHyperlink_Click">
-                                详情
-                            </Hyperlink>
-                                </TextBlock>
 
                                 <CheckBox Grid.Row="4" Grid.Column="0" Name="Algorithm5CheckBox" IsChecked="True" HorizontalAlignment="Center" Margin="4"/>
                                 <TextBlock Grid.Row="4" Grid.Column="1" Text="快速排序" HorizontalAlignment="Center" Margin="4"/>
-                                <TextBlock Grid.Row="4" Grid.Column="2" HorizontalAlignment="Center" Margin="4">
-                            <Hyperlink Name="Algorithm5Hyperlink" Click="AlgorithmHyperlink_Click">
-                                详情
-                            </Hyperlink>
-                                </TextBlock>
 
                                 <CheckBox Grid.Row="5" Grid.Column="0" Name="Algorithm6CheckBox" IsChecked="True" HorizontalAlignment="Center" Margin="4"/>
                                 <TextBlock Grid.Row="5" Grid.Column="1" Text="简单选择排序" HorizontalAlignment="Center" Margin="4"/>
-                                <TextBlock Grid.Row="5" Grid.Column="2" HorizontalAlignment="Center" Margin="4">
-                            <Hyperlink Name="Algorithm6Hyperlink" Click="AlgorithmHyperlink_Click">
-                                详情
-                            </Hyperlink>
-                                </TextBlock>
 
                                 <CheckBox Grid.Row="6" Grid.Column="0" Name="Algorithm7CheckBox" IsChecked="True" HorizontalAlignment="Center" Margin="4"/>
                                 <TextBlock Grid.Row="6" Grid.Column="1" Text="堆排序" HorizontalAlignment="Center" Margin="4"/>
-                                <TextBlock Grid.Row="6" Grid.Column="2" HorizontalAlignment="Center" Margin="4">
-                            <Hyperlink Name="Algorithm7Hyperlink" Click="AlgorithmHyperlink_Click">
-                                详情
-                            </Hyperlink>
-                                </TextBlock>
 
                                 <CheckBox Grid.Row="7" Grid.Column="0" Name="Algorithm8CheckBox" IsChecked="True" HorizontalAlignment="Center" Margin="4"/>
                                 <TextBlock Grid.Row="7" Grid.Column="1" Text="二路归并排序" HorizontalAlignment="Center" Margin="4"/>
-                                <TextBlock Grid.Row="7" Grid.Column="2" HorizontalAlignment="Center" Margin="4">
-                            <Hyperlink Name="Algorithm8Hyperlink" Click="AlgorithmHyperlink_Click">
-                                详情
-                            </Hyperlink>
-                                </TextBlock>
                             </Grid>
                         </ScrollViewer>
                     </GroupBox>

@@ -177,33 +177,6 @@ namespace SimpleSortAlgorithmEmulator
             }
         }
 
-        private void AlgorithmHyperlink_Click(object sender, RoutedEventArgs e)
-        {
-            Hyperlink algorithmHyperlink = (Hyperlink)sender;
-            switch (algorithmHyperlink.Name)
-            {
-                case "Algorithm1Hyperlink":
-                    break;
-                case "Algorithm2Hyperlink":
-                    break;
-                case "Algorithm3Hyperlink":
-                    break;
-                case "Algorithm4Hyperlink":
-                    break;
-                case "Algorithm5Hyperlink":
-                    break;
-                case "Algorithm6Hyperlink":
-                    break;
-                case "Algorithm7Hyperlink":
-                    break;
-                case "Algorithm8Hyperlink":
-                    break;
-                default:
-                    System.Windows.MessageBox.Show("操作非法！请重试！", "警告", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
-            }
-        }
-
         private void SelectResultSaveFolderButton_Click(object sender, RoutedEventArgs e)
         {
             FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
