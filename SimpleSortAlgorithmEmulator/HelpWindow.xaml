@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SimpleSortAlgorithmEmulator"
         mc:Ignorable="d"
-        Title="使用说明" Height="632" Width="512" ResizeMode="NoResize">
+        Title="使用说明" Height="640" Width="512" ResizeMode="NoResize">
 
     <StackPanel Margin="12" Width="476">
         <TextBlock FontSize="20" Margin="0,0,0,4">
@@ -33,7 +33,7 @@
             排序：
         </TextBlock>
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4">
-            算法选择：勾选或取消勾选算法前面的多选框可以选择本次排序使用的算法（至少一项）。点击算法右侧的“详情”链接可查看该算法的C#代码以及详细说明。
+            算法选择：勾选或取消勾选算法名称前面的多选框可以选择本次排序使用的算法（至少一项）。注意，在对数据量较大的数据进行排序时尽可能少选几项算法，避免程序运行时间过长产生卡顿、假死等不必要问题。
         </TextBlock>
         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4">
             重复次数：考虑到计算机CPU计算所需时间受诸多因素影响，并且多为不可控因素，排序所需时间往往会有一定的波动，尤其是在执行计算量较小的排序运算时，该偏差可能会对最终结果产生较大影响，故建议设置每一种算法执行多次，通过取平均值的方式缩小误差。执行次数可选择1 ~ 20次（推荐5次）。
