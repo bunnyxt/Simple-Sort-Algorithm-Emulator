@@ -677,6 +677,16 @@ namespace SimpleSortAlgorithmEmulator
                             }
                         } while (flag != 0);
                     }
+
+                    ////1234567890
+                    //Random ra = new Random();
+                    //for (i = 0; i < innerRandomNums.Length; i++)
+                    //{
+                    //    if (ra.Next(1, 20) == 1)
+                    //    {
+                    //        innerRandomNums[i] = ra.Next(1, 100000);
+                    //    }
+                    //}
                 }
 
                 //record time used
@@ -736,16 +746,23 @@ namespace SimpleSortAlgorithmEmulator
                 sw.Restart();
 
                 //go sort
+                int flag = 0;
                 for (int i = 0; i < innerRandomNums.Length; i++)
                 {
+                    flag = 0;
                     for (int j = innerRandomNums.Length - 1; j > i; j--)
                     {
                         if (innerRandomNums[j] < innerRandomNums[j - 1])
                         {
+                            flag = 1;
                             int temp = innerRandomNums[j];
                             innerRandomNums[j] = innerRandomNums[j - 1];
                             innerRandomNums[j - 1] = temp;
                         }
+                    }
+                    if (flag == 0)
+                    {
+                        break;
                     }
                 }
 
@@ -866,6 +883,7 @@ namespace SimpleSortAlgorithmEmulator
             a[first] = key;
             Quicksort(a, low, first - 1);
             Quicksort(a, first + 1, high);
+
         }
 
         //简单选择排序
