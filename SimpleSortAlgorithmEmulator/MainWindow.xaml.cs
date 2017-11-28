@@ -677,16 +677,6 @@ namespace SimpleSortAlgorithmEmulator
                             }
                         } while (flag != 0);
                     }
-
-                    ////1234567890
-                    //Random ra = new Random();
-                    //for (i = 0; i < innerRandomNums.Length; i++)
-                    //{
-                    //    if (ra.Next(1, 20) == 1)
-                    //    {
-                    //        innerRandomNums[i] = ra.Next(1, 100000);
-                    //    }
-                    //}
                 }
 
                 //record time used
